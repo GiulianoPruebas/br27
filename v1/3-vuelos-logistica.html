@@ -1,0 +1,53 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brasil 01/04/2027 · Vuelos y logística</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1>✈️ Vuelos, auto, nafta y fuentes</h1><div class="mut">Datos leídos el 26/10/2026 con Chrome + Selenium (Google Flights, Airbnb) y fuentes públicas.</div>
+<nav><a href="1-plan.html">1 · Plan día a día</a><a href="2-presupuesto.html">2 · Presupuesto dinámico</a><a class="on" href="3-vuelos-logistica.html">3 · Vuelos, auto y nafta</a></nav></header>
+<main>
+<h2>Vuelos Buenos Aires → Río (solo ida, por persona) <span class="tag real">REAL</span></h2>
+<div class="card scroll"><table id="out"></table></div>
+<h2>Vuelos Río → Buenos Aires, domingo 11/4 (tarde-noche) <span class="tag real">REAL</span></h2>
+<div class="card scroll"><table id="ret"></table></div>
+<div class="grid" style="margin-top:12px">
+<div class="card"><h3>Mejor combo que cumple tu pedido</h3><b>Gol 23:00 (USD 338) + JetSMART 20:05 (USD 171) = USD 509</b> por persona sin equipaje despachado. Con la vuelta de las 16:00 pagás lo mismo pero perdés 4 h en Río.</div>
+<div class="card"><h3>Si flexibilizás la ida</h3>JetSMART 15:55 (USD 236) + vuelta 171 = USD 407: ahorrás USD 102 p/p (USD 408 / 816 / 1.224 para 4 / 8 / 12) y ganás la noche del 1/4 en Río. Desde Ezeiza hay también un LATAM con escala (USD 271) que llega a las 21:15.</div>
+<div class="card warn"><h3>Ojo</h3>Son precios de hoy a 5 meses vista; en octubre ya hay promos de verano desde USD 341–399 ida y vuelta, así que abril puede bajar. Equipaje despachado en low cost: <span class="tag est">EST</span> USD 35 por tramo. Con 12 personas: comprar en tandas de 4.</div>
+</div>
+
+<h2>Auto: tramos, km, nafta y peajes</h2>
+<div class="card scroll"><table id="legs"></table></div>
+<div class="grid" style="margin-top:12px" id="fuel"></div>
+<div class="card" style="margin-top:12px"><b>Cómo se calcula:</b> litros = km ÷ rendimiento · costo = litros × precio. Precio de partida R$ 6,40/l (ANP: gasolina común en Río R$ 6,13 en feb/2026, promedio nacional R$ 6,62 en mayo/2026) <span class="tag real">REAL</span>. Rendimiento 11 km/l <span class="tag est">EST</span>. Alquiler: ~USD 45/día todo incluido por auto compacto <span class="tag est">EST</span> (Kayak AR muestra "desde $24.622 ARS/día" base, minivan ~USD 52–63/día). Un auto cada 4 personas; con 8 o 12 también podés usar minivan de 7 plazas.<br>
+Peajes: Arraial R$ 13,65 (BR-101, 2 praças) <span class="tag real">REAL</span>; Ponte Rio-Niterói y resto <span class="tag est">EST</span> (confirmar tarifa vigente).</div>
+
+<h2>Alojamiento: Airbnb (todo incluido, USD/noche total del grupo) <span class="tag real">REAL</span></h2>
+<div class="card scroll"><table id="lod"></table></div>
+<p class="mut">Muestra de 11–20 anuncios por búsqueda, fechas Río 2–5/4, Arraial 5–7/4, Búzios 7–9/4, precios con tarifas incluidas. Para 12 personas, dos departamentos juntos suelen salir más barato que una casa enorme. Raw: carpeta <code>scraping/</code>.</p>
+
+<h2>Cambio usado <span class="tag real">REAL</span></h2>
+<div class="card">1 USD = R$ 4,995 (open.er-api, 26/10/2026) · dólar blue ARS 1.575, oficial venta 1.560, tarjeta 2.028 (dolarapi.com). En la página 2 los podés cambiar.</div>
+
+<h2>Fuentes</h2>
+<ul class="mut">
+<li><a href="https://www.google.com/travel/flights?q=Flights%20from%20AEP%20to%20GIG%20on%202027-04-01%20through%202027-04-11&curr=USD&hl=es-419&gl=AR">Google Flights AEP–GIG 1/4–11/4/2027</a> (re-verificar antes de comprar)</li>
+<li><a href="https://promociones-aereas.com.ar/2026/10/arranca-el-verano-en-brasil-vuelos-directos-a-rio-de-janeiro-desde-buenos-aires-gol-jetsmart-rt-p.html">Promociones Aéreas · directos a Río desde USD 346</a></li>
+<li><a href="https://valorfinal.com.br/tempo-de-viagem/rio-de-janeiro-para-arraial-do-cabo">Río–Arraial: 165 km, 2h06–2h21, peaje R$ 13,65</a> · <a href="https://www.bookaway.com/suppliers/1001">Río–Búzios ~133 km (bus)</a></li>
+<li><a href="https://www.viajenaviagem.com/destino/rio-de-janeiro/cristo-redentor">Cristo Redentor: entradas 2026</a> · <a href="https://planrio.com/nightlife">Nightlife Río 2026</a> · <a href="https://www.riotimesonline.com/rio-de-janeiro-nightlife-guide-2026/">Rio Times nightlife</a></li>
+<li><a href="https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2026/sintese-precos-22.pdf">ANP síntesis semanal de precios</a> · <a href="https://www.em.com.br/emfoco/2026/01/22/arraial-do-cabo-ou-ilha-grande-qual-o-melhor-destino-para-suas-ferias-no-verao-2026/">Arraial vs. Ilha Grande</a> · <a href="https://www.es.kayak.com/Rio-de-Janeiro-Brasil-Coches-de-alquiler.78.crr.html">Kayak alquiler Río</a></li>
+</ul>
+<div class="card warn"><b>Límites honestos:</b> no pude leer TikTok/Instagram/X; no verifiqué tarifas de Pão de Açúcar, Ponte Rio-Niterói ni Via Lagos; los km de Arraial/Búzios locales son aproximados. Todo lo marcado EST se ajusta en la página 2.</div>
+</main>
+<script src="data.js"></script>
+<script>
+const $=id=>document.getElementById(id), P=structuredClone(DEF);
+const flt=(t,list)=>`<tr><th>Vuelo</th><th class="n">USD</th><th>Cumple</th></tr>`+list.map(o=>`<tr class="${o.ok?"":"bad"}"><td>${o.label}</td><td class="n">${o.usd}</td><td>${o.ok?"✅":"—"}</td></tr>`).join("");
+$("out").innerHTML=flt("out",D.out);$("ret").innerHTML=flt("ret",D.ret);
+$("lod").innerHTML=`<tr><th>Zona (noches)</th>${D.groups.map(n=>`<th class="n">${n} pers. econ / med</th>`).join("")}</tr>`
+ +Object.keys(D.lodging).map(k=>`<tr><td>${k} (${D.nights[k]})</td>${D.groups.map(n=>`<td class="n">${D.lodging[k][n].econ} / ${D.lodging[k][n].med}</td>`).join("")}</tr>`).join("");
+function render(){
+ $("legs").innerHTML=`<tr><th>Tramo</th><th class="n">km</th><th class="n">Peaje R$/auto</th></tr>`+D.legs.map((l,i)=>`<tr><td>${l.name}</td><td class="n"><input style="width:80px" type="number" data-i="${i}" data-j="0" value="${P.legs[i][0]}"></td><td class="n"><input style="width:80px" type="number" data-i="${i}" data-j="1" value="${P.legs[i][1]}"></td></tr>`).join("")
+  +`<tr class="tot"><td>Total</td><td class="n">${P.legs.reduce((s,l)=>s+l[0],0)} km</td><td class="n">R$ ${P.legs.reduce((s,l)=>s+l[1],0)}</td></tr>`;
+ $("fuel").innerHTML=D.groups.map(n=>{const r=calc(n,P),g=x=>r.L.find(l=>l.cat==x).usd;
+  return `<div class="card"><h3>${n} personas · ${r.cars} auto(s)</h3>Nafta: <b>${usd(g("Nafta"))}</b> (${(r.km/P.kml*r.cars).toFixed(0)} l)<br>Peajes: <b>${usd(g("Peajes"))}</b><br>Alquiler: <b>${usd(g("Auto"))}</b><br>Por persona: <b>${usd((g("Nafta")+g("Peajes")+g("Auto"))/n)}</b></div>`}).join("");
+ document.querySelectorAll("#legs input").forEach(e=>e.oninput=()=>{P.legs[e.dataset.i][e.dataset.j]=+e.value;const f=document.activeElement.dataset;render();document.querySelector(`#legs input[data-i="${f.i}"][data-j="${f.j}"]`)?.focus()});
+}
+render();
+</script></body></html>

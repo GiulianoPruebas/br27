@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brasil 01/04/2027</title>
+<style>
+:root{--bg:#0b1118;--bg2:#101a24;--card:#16222f;--card2:#1c2b3b;--fg:#eaf1f7;--mut:#8ea3b6;--bd:#26384b;--a:#2dd4bf;--b:#fbbf24;--c:#fb7185;--d:#60a5fa;--e:#a78bfa;--ok:#4ade80;--sh:0 10px 30px #0006}
+@media(prefers-color-scheme:light){:root{--bg:#f3f6f9;--bg2:#e9eff5;--card:#fff;--card2:#f0f5f9;--fg:#14202b;--mut:#587084;--bd:#d5e0e9;--a:#0d9488;--b:#b45309;--c:#e11d48;--d:#2563eb;--e:#7c3aed;--ok:#15803d;--sh:0 8px 24px #0f2a4014}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,"Segoe UI",sans-serif;padding-bottom:84px}
+button{font:inherit;color:inherit;cursor:pointer}input,select{font:inherit;color:var(--fg)}
+.hero{position:relative;overflow:hidden;padding:44px 16px 70px;background:linear-gradient(135deg,#0f766e 0%,#0e7490 35%,#7c3aed 70%,#e11d48 100%);color:#fff}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 0,#fbbf2466,transparent),radial-gradient(500px 300px at 0 100%,#0008,transparent)}
+.hero>div{position:relative;max-width:1100px;margin:auto}.hero h1{font-size:clamp(2rem,6vw,3.4rem);margin:0;line-height:1.05;letter-spacing:-1px}.hero p{margin:8px 0 18px;opacity:.9;max-width:640px}
+.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{background:#ffffff22;backdrop-filter:blur(8px);border:1px solid #ffffff44;border-radius:14px;padding:8px 14px}.stat b{display:block;font-size:1.25rem}.stat span{font-size:.78rem;opacity:.85}
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.bar>div{max-width:1100px;margin:auto;display:flex;gap:10px;align-items:center;padding:8px 16px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:8px 14px;border-radius:999px;color:var(--mut);white-space:nowrap;font-weight:600}.tab.on{background:var(--a);color:#032421}.tab:hover:not(.on){background:var(--card)}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--bd);border-radius:999px;padding:3px}.seg button{border:0;background:none;padding:5px 12px;border-radius:999px;font-weight:700;color:var(--mut)}.seg button.on{background:var(--b);color:#2a1a00}
+main{max-width:1100px;margin:0 auto;padding:0 16px;position:relative}section{display:none;animation:in .35s}section.on{display:block}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+h2{font-size:1.5rem;margin:26px 0 4px}.sub{color:var(--mut);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;box-shadow:var(--sh)}.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.chip{border:1px solid var(--bd);background:var(--card);padding:6px 13px;border-radius:999px;font-weight:600;font-size:.9rem;transition:.15s}.chip:hover{border-color:var(--a)}.chip.on{background:var(--a);color:#032421;border-color:var(--a)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid;margin-left:4px;vertical-align:middle}.tag.real{color:var(--ok)}.tag.est{color:var(--b)}
+.mut{color:var(--mut)}.big{font-size:2rem;font-weight:800;letter-spacing:-1px}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.sp{flex:1}
+/* days */
+.days{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px}.day{flex:0 0 auto;min-width:74px;text-align:center;border:1px solid var(--bd);background:var(--card);border-radius:14px;padding:8px 10px}.day b{display:block;font-size:1.2rem}.day small{color:var(--mut)}.day.on{background:linear-gradient(160deg,var(--a),var(--d));color:#04211e;border-color:transparent}.day.on small{color:#04211ecc}
+.slot{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--bd)}.slot:last-child{border:0}.slot i{font-style:normal;font-size:1.5rem}
+.pill{display:inline-block;background:var(--card2);border:1px solid var(--bd);border-radius:999px;padding:2px 10px;font-size:.82rem;margin:2px 4px 2px 0;cursor:pointer}.pill:hover{border-color:var(--a)}
+svg text{font:600 12px system-ui;fill:var(--fg)}.pulse{animation:pl 1.6s infinite}@keyframes pl{0%{r:8;opacity:.9}100%{r:26;opacity:0}}
+/* places */
+.pl{cursor:pointer;transition:.2s;position:relative;overflow:hidden}.pl:hover{transform:translateY(-3px);border-color:var(--a)}.pl h3{margin:4px 0}.pl .em{font-size:2rem}.pl .more{display:none;margin-top:8px;border-top:1px dashed var(--bd);padding-top:8px;font-size:.92rem}.pl.open .more{display:block}
+.star{position:absolute;right:10px;top:8px;border:0;background:none;font-size:1.3rem;opacity:.5}.star.on{opacity:1}
+input[type=search],input[type=number],select{background:var(--card2);border:1px solid var(--bd);border-radius:10px;padding:8px 10px}
+input[type=range]{width:100%;accent-color:var(--a)}label{display:block;font-size:.8rem;color:var(--mut)}label b{color:var(--fg);float:right}
+/* flights */
+.fl{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;width:100%;text-align:left;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin-bottom:8px;transition:.15s}.fl:hover{border-color:var(--a)}.fl.on{outline:2px solid var(--a);background:var(--card2)}.fl.no{opacity:.55}
+.fl .bb{grid-column:1/-1;height:5px;border-radius:5px;background:var(--bd);overflow:hidden}.fl .bb i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b))}
+table{width:100%;border-collapse:collapse;font-size:.93rem}td,th{padding:7px 6px;border-bottom:1px solid var(--bd);text-align:left}td.n,th.n{text-align:right;white-space:nowrap}tr.tot td{font-weight:800;border-top:2px solid var(--a)}
+.scroll{overflow-x:auto}.leg{display:grid;grid-template-columns:1fr 80px 80px;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)}.leg input{width:100%}
+.bars div.b{height:26px;border-radius:8px;margin:6px 0;display:flex;align-items:center;padding:0 10px;font-weight:700;color:#04211e;background:linear-gradient(90deg,var(--a),var(--d));transition:width .4s;white-space:nowrap}
+.dn{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.lg{flex:1;min-width:200px}.lg div{display:flex;align-items:center;gap:8px;padding:4px 6px;border-radius:8px;cursor:default}.lg div:hover{background:var(--card2)}.lg i{width:12px;height:12px;border-radius:4px;display:inline-block}.lg span{margin-left:auto;font-weight:700}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--bd);cursor:pointer}.ck input{margin-top:5px;accent-color:var(--a);width:18px;height:18px}.ck.done span{text-decoration:line-through;color:var(--mut)}
+.prog{height:10px;background:var(--bd);border-radius:10px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--ok));transition:width .3s}
+.fab{position:fixed;left:0;right:0;bottom:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--bd)}.fab>div{max-width:1100px;margin:auto;padding:10px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--bd);background:var(--card2);padding:8px 14px;border-radius:12px;font-weight:700}.btn:hover{border-color:var(--a)}.btn.pri{background:var(--a);color:#032421;border-color:var(--a)}
+.warn{border-left:4px solid var(--b)}details{margin-top:8px}summary{cursor:pointer;font-weight:700;color:var(--a)}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--a);color:#032421;padding:8px 16px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:40}#toast.on{opacity:1}
+@media print{.bar,.fab,.hero{display:none}section{display:block!important;break-inside:avoid}}
+@media(max-width:560px){.hero{padding-top:28px}.g2{grid-template-columns:1fr}}
+</style></head><body>
+
+<div class="hero"><div>
+  <div class="tag" style="border-color:#fff8;color:#fff;margin:0 0 10px">Buenos Aires → Río · 1 al 11 de abril de 2027</div>
+  <h1>Río de Janeiro,<br>Arraial do Cabo &amp; Búzios</h1>
+  <p>Joda y playa en Río (2, 3 y 4), Cristo, atardeceres y las playas más lindas de la costa. Todo calculado para 4, 8 o 12 personas y editable en vivo.</p>
+  <div class="stats" id="heroStats"></div>
+</div></div>
+
+<div class="bar"><div>
+  <div class="tabs" id="tabs"></div>
+  <div class="seg" id="gSeg" title="Tamaño del grupo"></div>
+  <div class="seg" id="cSeg"><button data-c="usd" class="on">USD</button><button data-c="ars">ARS</button></div>
+</div></div>
+
+<main>
+<!-- PLAN -->
+<section id="plan"><h2>🗓️ Plan día por día</h2><p class="sub">Tocá un día. El mapa te muestra dónde estás y el costo del día se ajusta al grupo elegido.</p>
+  <div class="days" id="days"></div>
+  <div class="grid g2"><div class="card" id="dayCard"></div><div class="card"><div class="row"><b>Ruta en auto</b><span class="sp"></span><span class="mut" id="routeKm"></span></div><svg id="map" viewBox="0 0 560 320" width="100%"></svg><div class="mut" style="font-size:.8rem">Mapa esquemático (no a escala). Tocá una ciudad para filtrar sus lugares.</div></div></div>
+</section>
+
+<!-- LUGARES -->
+<section id="lugares"><h2>📍 Lugares para indagar</h2><p class="sub">Filtrá, buscá, abrí cada tarjeta para ver tips y marcá ⭐ tus favoritos (se guardan).</p>
+  <div class="row"><input type="search" id="q" placeholder="Buscar: samba, snorkel, atardecer…" style="flex:1;min-width:200px"><button class="btn" id="favOnly">⭐ Solo favoritos <b id="favN">0</b></button></div>
+  <div class="chips" id="catChips"></div><div class="chips" id="zoneChips"></div>
+  <div class="grid" id="places"></div>
+</section>
+
+<!-- VUELOS -->
+<section id="vuelos"><h2>✈️ Vuelos <span class="tag real">REAL · Google Flights 26/10/2026</span></h2><p class="sub">Elegí ida y vuelta: el presupuesto se actualiza solo. Precios por persona, solo ida.</p>
+  <div class="row"><button class="chip on" id="onlyOk">Solo los que cumplen mi pedido (ida &gt; 20 h)</button></div>
+  <div class="grid g2" style="margin-top:12px"><div><h3>Jueves 1/4 · Buenos Aires → Río</h3><div id="outL"></div></div><div><h3>Domingo 11/4 · Río → Buenos Aires</h3><div id="retL"></div></div></div>
+  <div class="card warn" id="flSum" style="margin-top:12px"></div>
+</section>
+
+<!-- AUTO -->
+<section id="auto"><h2>🚗 Auto, km y nafta</h2><p class="sub">Retiro 5/4 en Río, devolución 9/4. Editá km, peajes, rendimiento y precio de la nafta.</p>
+  <div class="grid g2"><div class="card"><div class="seg" id="vanSeg" style="margin-bottom:10px"><button data-v="0" class="on">1 auto cada 4</button><button data-v="1">Minivan 7 plazas</button></div>
+    <div id="legs"></div>
+    <label style="margin-top:10px">Rinde (km/l) <b id="vKml"></b><input type="range" id="kml" min="7" max="16" step=".5"></label>
+    <label>Nafta R$/litro <b id="vFuel"></b><input type="range" id="fuel" min="5" max="9" step=".05"></label>
+    <label>Alquiler USD/día por auto <b id="vCar"></b><input type="range" id="carDay" min="20" max="120" step="1"></label>
+    <label>Días de auto <b id="vCd"></b><input type="range" id="carDays" min="3" max="7" step="1"></label>
+    <div class="mut" style="font-size:.8rem;margin-top:8px">Gasolina en Río: R$ 6,13 (ANP feb/2026) · nacional R$ 6,62 (may/2026) <span class="tag real">REAL</span>. Peaje Arraial R$ 13,65 <span class="tag real">REAL</span>; puente y resto <span class="tag est">EST</span>.</div></div>
+    <div class="card"><b>Costo del auto por grupo</b><div class="bars" id="carBars"></div><div class="scroll"><table id="carTb"></table></div></div></div>
+</section>
+
+<!-- PRESUPUESTO -->
+<section id="presu"><h2>💸 Presupuesto</h2><p class="sub">Probá escenarios y mirá cómo se reparte la plata. Todo incluido salvo gastos personales.</p>
+  <div class="chips" id="presets"></div>
+  <div class="grid g2"><div class="card"><div class="dn"><svg id="donut" viewBox="0 0 120 120" width="190" height="190"></svg><div class="lg" id="legend"></div></div></div>
+    <div class="card"><div id="kpis" class="grid" style="grid-template-columns:repeat(3,1fr);gap:8px"></div><div class="bars" id="cmpBars" style="margin-top:10px"></div></div></div>
+  <div class="grid g2" style="margin-top:14px"><div class="card" id="sliders"></div><div class="card scroll"><table id="tb"></table><div class="row" style="margin-top:10px"><button class="btn pri" id="copy">📋 Copiar resumen</button><button class="btn" onclick="print()">🖨️ Imprimir / PDF</button></div></div></div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="check"><h2>✅ Checklist de reservas</h2><p class="sub">En orden de prioridad. Se guarda en tu navegador.</p>
+  <div class="card"><div class="row"><b id="ckT"></b><span class="sp"></span></div><div class="prog" style="margin:8px 0 12px"><i id="ckP"></i></div><div id="ckL"></div></div>
+  <div class="card warn" style="margin-top:14px"><b>Límites honestos</b><br>No pude leer TikTok/Instagram/X (requieren login), así que los lugares salen de guías 2026, Tripadvisor y rutas de operadores, no de un conteo de virales. Lo marcado <span class="tag est">EST</span> es estimación mía. No verifiqué la tarifa del Pão de Açúcar ni los peajes de la Ponte Rio-Niterói y Búzios→Río. Los vuelos son de hoy a 5 meses de la fecha.</div>
+  <details class="card" style="margin-top:14px"><summary>Fuentes y cambio usado</summary><div class="mut">1 USD = R$ 4,995 (open.er-api 26/10/2026) · dólar blue ARS 1.575 (dolarapi). Datos crudos en <code>scraping/</code>.<ul>
+  <li><a href="https://www.google.com/travel/flights?q=Flights%20from%20AEP%20to%20GIG%20on%202027-04-01%20through%202027-04-11&curr=USD&hl=es-419&gl=AR">Google Flights AEP–GIG</a></li>
+  <li><a href="https://promociones-aereas.com.ar/2026/10/arranca-el-verano-en-brasil-vuelos-directos-a-rio-de-janeiro-desde-buenos-aires-gol-jetsmart-rt-p.html">Promociones Aéreas</a></li>
+  <li><a href="https://valorfinal.com.br/tempo-de-viagem/rio-de-janeiro-para-arraial-do-cabo">Río–Arraial 165 km</a> · <a href="https://www.viajenaviagem.com/destino/rio-de-janeiro/cristo-redentor">Cristo Redentor entradas</a></li>
+  <li><a href="https://planrio.com/nightlife">Nightlife Río</a> · <a href="https://www.riotimesonline.com/rio-de-janeiro-nightlife-guide-2026/">Rio Times</a> · <a href="https://www.em.com.br/emfoco/2026/01/22/arraial-do-cabo-ou-ilha-grande-qual-o-melhor-destino-para-suas-ferias-no-verao-2026/">Arraial vs Ilha Grande</a></li>
+  <li><a href="https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/arq-sintese-semanal/2026/sintese-precos-22.pdf">ANP precios</a> · <a href="https://www.es.kayak.com/Rio-de-Janeiro-Brasil-Coches-de-alquiler.78.crr.html">Kayak autos</a> · Airbnb (scrape propio, 11–20 anuncios por zona)</li></ul></div></details>
+</section>
+</main>
+
+<div class="fab"><div><div><span class="mut" style="font-size:.78rem">Por persona</span><div class="big" id="fabPP"></div></div><div><span class="mut" style="font-size:.78rem">Total grupo</span><div style="font-weight:800;font-size:1.2rem" id="fabT"></div></div><span class="sp"></span><button class="btn pri" onclick="go('presu')">Ver desglose →</button></div></div>
+<div id="toast"></div>
+
+<script>
+/* ============ DATOS ============ */
+const D={fx:{brl:4.995,ars:1575},groups:[4,8,12],
+ out:[{id:"gol2300",t:"Gol 23:00",d:"AEP→GIG · llega 01:50 del 2/4",usd:338,ok:1},{id:"jet1555",t:"JetSMART 15:55",d:"AEP→GIG · llega 18:50",usd:236,ok:0},{id:"lat1455",t:"LATAM 14:55",d:"AEP→GIG · llega 17:50",usd:306,ok:0},{id:"aer1730",t:"Aerolíneas 17:30",d:"AEP→GIG · llega 20:25",usd:421,ok:0}],
+ ret:[{id:"jet2005",t:"JetSMART 20:05",d:"GIG→AEP · llega 23:33",usd:171,ok:1},{id:"gol1735",t:"Gol 17:35",d:"GIG→AEP · llega 21:00",usd:181,ok:1},{id:"jet1600",t:"JetSMART 16:00",d:"GIG→AEP · llega 19:20",usd:171,ok:1},{id:"aer2115",t:"Aerolíneas/Gol 21:15",d:"GIG→AEP · llega 00:40 del 12/4",usd:181,ok:1},{id:"aer1555",t:"Aerolíneas 15:55",d:"GIG→AEP · llega 19:20",usd:197,ok:1}],
+ lodging:{rio:{4:{econ:82,med:102},8:{econ:211,med:230},12:{econ:428,med:519}},arraial:{4:{econ:91,med:132},8:{econ:112,med:130},12:{econ:186,med:286}},buzios:{4:{econ:68,med:102},8:{econ:148,med:192},12:{econ:275,med:326}}},
+ nights:{rio:6,arraial:2,buzios:2},
+ legs:[{n:"Río → Arraial do Cabo",km:165,toll:21},{n:"Arraial local (Pontal, Forno, Prainhas)",km:25,toll:0},{n:"Arraial → Búzios",km:55,toll:0},{n:"Búzios local (Geribá, João Fernandes…)",km:40,toll:0},{n:"Búzios → Río",km:170,toll:30}],
+ acts:[{id:"cristo",l:"Cristo Redentor",brl:87,day:3},{id:"pao",l:"Pão de Açúcar",brl:190,day:4},{id:"arr",l:"Barco Arraial",brl:150,day:6},{id:"buz",l:"Goleta Búzios",brl:120,day:8},{id:"dos",l:"Dois Irmãos / Parque Lage / Botânico",brl:40,day:10}],
+ food:{econ:25,med:40,alto:60}};
+const CATS={joda:["🔥 Joda","var(--c)"],playa:["🏖️ Playa","var(--a)"],postal:["📸 Postal","var(--b)"],natu:["🌿 Naturaleza","var(--ok)"]};
+const PLACES=[
+["lapa","Lapa","rio","joda","🎺","Epicentro del samba. Rio Scenarium y Carioca da Gema con samba en vivo casi todas las noches.","Bares desde las 21 h, clubes pican de 1 a 3 am. Uber siempre y esperá el auto adentro del local.","R$ 50–150 de entrada/consumo"],
+["pedra","Pedra do Sal","rio","joda","🥁","Roda de samba al aire libre, gratis lunes y viernes.","Te cae el viernes 2/4. Llegá temprano para ubicarte; cerveza de la calle.","Gratis"],
+["ipaleb","Ipanema y Leblon de noche","rio","joda","🍹","Bares prolijos y tragos con vista. Canastra Bar es el clásico de los martes en Ipanema.","Nunca pises la arena de noche (consejo repetido en las guías de seguridad).","R$ 60–120 p/p"],
+["urca","Mureta da Urca","rio","joda","🍺","Cerveza sentado en el murito frente a la bahía al atardecer. Plan barato y lindo.","Combinalo con el Pão de Açúcar el domingo.","R$ 30–60 p/p"],
+["botafogo","Botafogo botecos","rio","joda","🍻","Botecos relajados para arrancar la noche antes de Lapa.","Ideal para grupos grandes: mesas largas.","R$ 40–80 p/p"],
+["ipa","Ipanema Posto 9 + Arpoador","rio","playa","🌅","Playa icónica y el atardecer con aplauso en Arpoador.","Posto 9 es el más joven. Llevá protector: en abril el sol sigue fuerte.","Gratis"],
+["prainha","Prainha","rio","playa","🏄","Una de las más lindas de la ciudad, rodeada de selva. Mar de surf.","No es para nadar tranquilo. Uber ~40 min desde Zona Sul.","Uber compartido"],
+["grumari","Grumari","rio","playa","🌴","Casi virgen, naturaleza pura, sector nudista y olas fuertes en partes.","Cerca de Prainha: hacé las dos el domingo 4/4.","Kioscos de playa"],
+["copa","Copacabana","rio","playa","🏖️","El día de resaca: caipirinha, vendedores y paseo por la orla.","Cuidá el celular y las cadenas.","Gratis"],
+["cristo","Cristo Redentor","rio","postal","⛪","Entrada incluye el transporte (tren o van). Van desde Paineiras R$ 87; tren R$ 134.","Reservá el turno de la mañana para mejor visibilidad. Comprá online.","R$ 87–134"],
+["pao","Pão de Açúcar","rio","postal","🚠","Bondinho con vista de toda la bahía, ideal al atardecer.","Tarifa sin verificar (estimé R$ 190). Comprá online.","~R$ 190"],
+["selaron","Escadaria Selarón + Santa Teresa","rio","postal","🎨","Escalera de azulejos y barrio bohemio de calles empedradas.","Combinalo con Lapa de día; está cerca.","Gratis"],
+["dois","Dois Irmãos / Vidigal","rio","natu","🥾","Caminata corta con vista de Ipanema y Leblon, mejor al amanecer.","Hacerlo con guía local o tour, no solos.","R$ 40 (est.)"],
+["lage","Parque Lage + Jardim Botânico","rio","natu","🌳","Selva dentro de la ciudad con vista al Cristo.","Día tranquilo para el 10/4.","R$ 20–40"],
+["forno","Praia do Forno","arraial","playa","🤿","Caminata corta, agua cristalina, perfecta para snorkel y chica: ir temprano.","También se llega en barco.","Incluido en tour"],
+["pontal","Pontal do Atalaia + Prainhas","arraial","playa","💎","Agua turquesa brillante, escalera de madera y calas.","Atardecer ideal el 5/4 a la llegada.","Gratis"],
+["farol","Praia do Farol + Gruta Azul","arraial","natu","🛥️","Solo en barco. La Gruta Azul y la Fenda de Nossa Senhora son paradas del tour.","El tour típico cubre Forno + Pontal + Farol + Gruta Azul.","R$ 120–200"],
+["joao","João Fernandes y Azeda","buzios","playa","🏝️","Las clásicas de Búzios: aguas calmas, restaurantes de pie en la arena.","Geribá es más de olas; Ferradura, calmísima.","Gratis"],
+["gole","Goleta por las islas","buzios","natu","⛵","Paseo en goleta con paradas para nadar.","Hacelo el jueves 8/4 por la mañana.","R$ 100–150"],
+["rua","Rua das Pedras + Orla Bardot","buzios","joda","🥂","Calle peatonal de bares y boliches, y el atardecer en la orla.","Arrancá con el atardecer y seguí de noche.","R$ 60–150 p/p"]
+].map(a=>({id:a[0],n:a[1],z:a[2],c:a[3],e:a[4],d:a[5],tip:a[6],cost:a[7]}));
+const DAYS=[
+{d:"Jue",n:1,loc:"rio",t:"Salida nocturna",s:[["✈️","Salida 23:00 Gol AEP→GIG","Check-in online y equipaje listo. Cenar antes en Aeroparque."]],p:[],night:0},
+{d:"Vie",n:2,loc:"rio",t:"Llegada + primera noche",s:[["🛬","Madrugada","Llegás 01:50 → Uber a Ipanema (self check-in). A dormir."],["🏖️","Tarde","Ipanema Posto 9 y atardecer en Arpoador."],["🔥","Noche","Pedra do Sal (roda gratis) y Lapa."]],p:["ipa","pedra","lapa"],night:1},
+{d:"Sáb",n:3,loc:"rio",t:"Cristo + noche grande",s:[["⛪","Mañana","Cristo Redentor, turno temprano."],["🎨","Tarde","Escadaria Selarón + Santa Teresa, playa."],["🔥","Noche","Ipanema/Leblon o club en Lapa (pica 1–3 am)."]],p:["cristo","selaron","ipaleb","lapa"],night:1},
+{d:"Dom",n:4,loc:"rio",t:"Prainha + Grumari",s:[["🌴","Mañana","Uber a Prainha y Grumari. Almuerzo en kiosco de playa."],["🚠","Tarde","Pão de Açúcar al atardecer."],["🍺","Noche","Mureta da Urca. Noche tranquila: mañana se maneja."]],p:["prainha","grumari","pao","urca"],night:1},
+{d:"Lun",n:5,loc:"arraial",t:"Río → Arraial",s:[["🚗","9 h","Retirar autos en Zona Sul. 165 km (~2h30) por la Ponte Rio-Niterói."],["💎","Tarde","Pontal do Atalaia + Prainhas."],["🍤","Noche","Cena de pescado."]],p:["pontal"],night:0},
+{d:"Mar",n:6,loc:"arraial",t:"Barco por el Caribe brasileño",s:[["🛥️","Día completo","Forno, Farol, Gruta Azul y snorkel."],["🌙","Noche","Corta: es un pueblo tranquilo."]],p:["forno","farol"],night:0},
+{d:"Mié",n:7,loc:"buzios",t:"Arraial → Búzios",s:[["🤿","Mañana","Última nadada en Praia do Forno/Anjos."],["🚗","Mediodía","55 km a Búzios."],["🏝️","Tarde","João Fernandes + Azeda, atardecer Orla Bardot."],["🥂","Noche","Rua das Pedras."]],p:["forno","joao","rua"],night:0},
+{d:"Jue",n:8,loc:"buzios",t:"Goleta + noche en Búzios",s:[["⛵","Mañana","Goleta por las islas."],["🏝️","Tarde","Geribá / Ferradura."],["🥂","Noche","Joda en Rua das Pedras o beach club."]],p:["gole","joao","rua"],night:1},
+{d:"Vie",n:9,loc:"rio",t:"Vuelta a Río",s:[["🚗","9 h","Búzios → Río, 170 km (~3 h). Devolver autos."],["🏨","Tarde","Check-in Zona Sul, playa."],["🎺","Noche","Lapa / Botafogo para cerrar."]],p:["lapa","botafogo"],night:0},
+{d:"Sáb",n:10,loc:"rio",t:"Último día completo",s:[["🥾","Mañana","Dois Irmãos al amanecer o Parque Lage + Botânico."],["🏖️","Tarde","Leblon y atardecer en Arpoador."],["🍽️","Noche","Comida de despedida."]],p:["dois","lage","ipa"],night:0},
+{d:"Dom",n:11,loc:"rio",t:"Vuelta",s:[["🧳","Mañana","Check-out, guardar equipaje, Aterro do Flamengo o Copacabana."],["🚕","17 h","Uber a GIG."],["✈️","20:05","JetSMART GIG→AEP, llega 23:33."]],p:[],night:0}];
+const CHECK=["Comprar vuelo Gol 23:00 (en tandas de 4 si son 12)","Comprar vuelta del 11/4 (JetSMART 20:05)","Reservar Airbnb Río desde la noche del 1/4 (cancelación gratis)","Reservar Arraial do Cabo (5–7/4) y Búzios (7–9/4): hay poca oferta para 8–12","Alquilar autos: retiro 5/4 Zona Sul, devolución 9/4","Entradas Cristo y Pão de Açúcar con turno (1–2 semanas antes)","Tour en barco Arraial y goleta Búzios","DNI/pasaporte vigente (argentinos no necesitan visa)","Asistencia médica y eSIM","Descargar Uber, 99 y Google Maps offline","Llevar reales/tarjeta y protector solar + poncho liviano","Revisar el precio de los vuelos 2 meses antes (promos)"];
+
+/* ============ CALC ============ */
+const DEF={outId:"gol2300",retId:"jet2005",bag:70,lodg:"med",lm:1,food:"med",night:35,carDay:45,carDays:4,van:0,kml:11,fuel:6.4,ub:18,seg:45,sim:12,cont:10,acts:Object.fromEntries(D.acts.map(a=>[a.id,1])),legs:D.legs.map(l=>[l.km,l.toll])};
+function calc(n,p){const f=D.fx,L=[],add=(c,l,u)=>L.push({c,l,u});const o=D.out.find(x=>x.id==p.outId),r=D.ret.find(x=>x.id==p.retId);
+ const cars=Math.ceil(n/(p.van?7:4)),cd=p.carDay*(p.van?1.6:1),kml=p.kml*(p.van?.8:1);
+ add("Vuelos",o.t,o.usd*n);add("Vuelos",r.t,r.usd*n);if(p.bag)add("Vuelos","Equipaje",p.bag*n);
+ for(const k in D.nights)add("Alojamiento",k,D.lodging[k][n][p.lodg]*p.lm*D.nights[k]);
+ add("Comida","10 días",D.food[p.food]*10*n);add("Joda","3 noches",p.night*3*n);
+ const km=p.legs.reduce((s,l)=>s+l[0],0),toll=p.legs.reduce((s,l)=>s+l[1],0);
+ add("Auto","alquiler",cars*p.carDays*cd);add("Nafta","combustible",cars*km/kml*p.fuel/f.brl);add("Peajes","peajes",cars*toll/f.brl);
+ add("Uber Río","6 días + aeropuerto",Math.ceil(n/4)*(6*p.ub+80));
+ add("Actividades","tours",D.acts.filter(a=>p.acts[a.id]).reduce((s,a)=>s+a.brl,0)/f.brl*n);
+ if(p.seg)add("Extras","asistencia",p.seg*n);add("Extras","eSIM",p.sim*n);
+ const sub=L.reduce((s,x)=>s+x.u,0);add("Imprevistos",p.cont+"%",sub*p.cont/100);
+ const by={};L.forEach(x=>by[x.c]=(by[x.c]||0)+x.u);return{L,by,km,toll,cars,total:sub*(1+p.cont/100)}}
+if(typeof process!=="undefined"){const t=D.groups.map(n=>calc(n,DEF).total);console.assert(t[0]<t[1]&&t[1]<t[2]);console.log(t.map(Math.round))}
+</script>
+<script>
+/* ============ ESTADO ============ */
+const $=id=>document.getElementById(id),S={n:4,cur:"usd",tab:"plan",day:2,cat:"all",zone:"all",q:"",favOnly:0,okOnly:1,fav:{},ck:{},P:structuredClone(DEF)},P=S.P;
+try{const s=JSON.parse(localStorage.getItem("br2027")||"{}");Object.assign(S,{fav:s.fav||{},ck:s.ck||{}})}catch(e){}
+const save=()=>{try{localStorage.setItem("br2027",JSON.stringify({fav:S.fav,ck:S.ck}))}catch(e){}};
+const money=u=>S.cur=="usd"?"US$ "+Math.round(u).toLocaleString("es-AR"):"$ "+Math.round(u*D.fx.ars).toLocaleString("es-AR");
+const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1600)};
+const TABS=[["plan","🗓️ Plan"],["lugares","📍 Lugares"],["vuelos","✈️ Vuelos"],["auto","🚗 Auto y nafta"],["presu","💸 Presupuesto"],["check","✅ Checklist"]];
+const COL=["#2dd4bf","#fbbf24","#fb7185","#60a5fa","#a78bfa","#4ade80","#f97316","#22d3ee","#e879f9","#facc15","#94a3b8"];
+function go(t){S.tab=t;document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id==t));document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",b.dataset.t==t));history.replaceState(null,"","#"+t);scrollTo({top:0,behavior:"smooth"})}
+
+/* ============ BARRA ============ */
+$("tabs").innerHTML=TABS.map(t=>`<button class="tab" data-t="${t[0]}" onclick="go('${t[0]}')">${t[1]}</button>`).join("");
+$("gSeg").innerHTML=D.groups.map(n=>`<button data-n="${n}">👥 ${n}</button>`).join("");
+$("gSeg").onclick=e=>{const n=e.target.dataset.n;if(n){S.n=+n;upd()}};
+$("cSeg").onclick=e=>{const c=e.target.dataset.c;if(c){S.cur=c;upd()}};
+
+/* ============ PLAN ============ */
+const LOC={rio:[110,205],arraial:[420,235],buzios:[470,115]};
+function renderDays(){$("days").innerHTML=DAYS.map(d=>`<button class="day ${S.day==d.n?"on":""}" onclick="S.day=${d.n};renderDays()"><small>${d.d}</small><b>${d.n}</b><small>abr</small></button>`).join("");renderDay()}
+function dayCost(d){const n=S.n,a=D.acts.filter(x=>x.day==d.n&&P.acts[x.id]).reduce((s,x)=>s+x.brl/D.fx.brl*n,0);return d.n==1?0:D.food[P.food]*n+(d.night?P.night*n:0)+a}
+function renderDay(){const d=DAYS[S.day-1];$("dayCard").innerHTML=`<div class="row"><div><div class="mut">${d.d} ${d.n} de abril</div><h3 style="margin:0;font-size:1.4rem">${d.t}</h3></div><span class="sp"></span><div style="text-align:right"><div class="mut" style="font-size:.78rem">Gasto del día (${S.n} pers.)</div><b style="font-size:1.3rem">${money(dayCost(d))}</b></div></div>`
+ +d.s.map(s=>`<div class="slot"><i>${s[0]}</i><div><b>${s[1]}</b><div class="mut">${s[2]}</div></div></div>`).join("")
+ +(d.p.length?`<div style="margin-top:8px">${d.p.map(id=>{const p=PLACES.find(x=>x.id==id);return`<span class="pill" onclick="openPlace('${id}')">${p.e} ${p.n}</span>`}).join("")}</div>`:"")
+ +`<div class="row" style="margin-top:12px"><button class="btn" onclick="S.day=Math.max(1,S.day-1);renderDays()">← Anterior</button><button class="btn pri" onclick="S.day=Math.min(11,S.day+1);renderDays()">Siguiente →</button></div>`;drawMap()}
+function drawMap(){const cur=DAYS[S.day-1].loc,pt=(k)=>LOC[k],R=pt("rio"),A=pt("arraial"),B=pt("buzios");
+ $("routeKm").textContent=P.legs.reduce((s,l)=>s+l[0],0)+" km totales";
+ $("map").innerHTML=`<defs><linearGradient id="sea" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0e7490" stop-opacity=".5"/><stop offset="1" stop-color="#2dd4bf" stop-opacity=".12"/></linearGradient></defs>
+ <rect width="560" height="320" rx="14" fill="url(#sea)"/><path d="M0 120 Q90 150 140 175 T300 200 T420 190 T520 150 L560 140 L560 0 L0 0Z" fill="#4ade8033" stroke="#4ade8066"/>
+ <path d="M${R[0]} ${R[1]} L${A[0]} ${A[1]}" stroke="var(--b)" stroke-width="3" stroke-dasharray="6 6" fill="none"/><path d="M${A[0]} ${A[1]} L${B[0]} ${B[1]}" stroke="var(--b)" stroke-width="3" stroke-dasharray="6 6" fill="none"/><path d="M${B[0]} ${B[1]} Q300 100 ${R[0]} ${R[1]}" stroke="var(--c)" stroke-width="3" stroke-dasharray="2 7" fill="none"/>
+ <text x="250" y="238" fill="var(--b)">${P.legs[0][0]} km</text><text x="460" y="180">${P.legs[2][0]} km</text><text x="260" y="98" fill="var(--c)">${P.legs[4][0]} km</text>
+ ${[["rio","Río de Janeiro",R],["arraial","Arraial do Cabo",A],["buzios","Búzios",B]].map(([k,n,p])=>`<g style="cursor:pointer" onclick="filterZone('${k}')"><circle cx="${p[0]}" cy="${p[1]}" r="9" fill="${cur==k?"var(--a)":"var(--card2)"}" stroke="var(--fg)" stroke-width="2"/>${cur==k?`<circle class="pulse" cx="${p[0]}" cy="${p[1]}" r="8" fill="none" stroke="var(--a)" stroke-width="3"/>`:""}<text x="${p[0]-30}" y="${p[1]+28}">${n}</text></g>`).join("")}`}
+function filterZone(z){S.zone=z;go("lugares");renderPlaces()}
+function openPlace(id){S.cat="all";S.zone="all";S.q="";$("q").value="";go("lugares");renderPlaces();setTimeout(()=>{const e=$("pl_"+id);e?.classList.add("open");e?.scrollIntoView({block:"center",behavior:"smooth"})},60)}
+
+/* ============ LUGARES ============ */
+function renderPlaces(){$("catChips").innerHTML=[["all","Todo"],...Object.entries(CATS).map(([k,v])=>[k,v[0]])].map(([k,t])=>`<button class="chip ${S.cat==k?"on":""}" onclick="S.cat='${k}';renderPlaces()">${t}</button>`).join("");
+ $("zoneChips").innerHTML=[["all","Todas las zonas"],["rio","Río"],["arraial","Arraial do Cabo"],["buzios","Búzios"]].map(([k,t])=>`<button class="chip ${S.zone==k?"on":""}" onclick="S.zone='${k}';renderPlaces()">${t}</button>`).join("");
+ const q=S.q.toLowerCase(),l=PLACES.filter(p=>(S.cat=="all"||p.c==S.cat)&&(S.zone=="all"||p.z==S.zone)&&(!S.favOnly||S.fav[p.id])&&(!q||(p.n+p.d+p.tip).toLowerCase().includes(q)));
+ $("favN").textContent=Object.values(S.fav).filter(Boolean).length;$("favOnly").classList.toggle("pri",!!S.favOnly);
+ $("places").innerHTML=l.map(p=>`<div class="card pl" id="pl_${p.id}" onclick="this.classList.toggle('open')"><button class="star ${S.fav[p.id]?"on":""}" onclick="event.stopPropagation();S.fav['${p.id}']=!S.fav['${p.id}'];save();renderPlaces()">${S.fav[p.id]?"⭐":"☆"}</button><div class="em">${p.e}</div><span class="tag" style="color:${CATS[p.c][1]};margin:0">${CATS[p.c][0]}</span><h3>${p.n}</h3><div class="mut">${p.d}</div><div class="more"><b>Tip:</b> ${p.tip}<br><b>Costo:</b> ${p.cost}</div></div>`).join("")||`<div class="card">Nada con ese filtro 🤷</div>`}
+$("q").oninput=e=>{S.q=e.target.value;renderPlaces()};$("favOnly").onclick=()=>{S.favOnly=!S.favOnly;renderPlaces()};
+
+/* ============ VUELOS ============ */
+function renderFlights(){const row=(k,list)=>{const mx=Math.max(...list.map(x=>x.usd));return list.filter(o=>!S.okOnly||o.ok).map(o=>`<button class="fl ${P[k]==o.id?"on":""} ${o.ok?"":"no"}" onclick="P.${k}='${o.id}';upd()"><div><b>${o.t}</b> ${o.ok?"":'<span class="tag est">no cumple</span>'}<div class="mut" style="font-size:.85rem">${o.d}</div></div><b>US$ ${o.usd}</b><div class="bb"><i style="width:${o.usd/mx*100}%"></i></div></button>`).join("")};
+ $("outL").innerHTML=row("outId",D.out);$("retL").innerHTML=row("retId",D.ret);
+ const o=D.out.find(x=>x.id==P.outId),r=D.ret.find(x=>x.id==P.retId),n=S.n,sv=(o.usd-236)*n;
+ $("flSum").innerHTML=`<div class="row"><div><div class="mut">Tu combo</div><div class="big">US$ ${o.usd+r.usd} <span class="mut" style="font-size:1rem">p/p</span></div></div><div><div class="mut">Para ${n} personas</div><b style="font-size:1.4rem">${money((o.usd+r.usd)*n)}</b></div><div class="sp"></div><div style="max-width:420px" class="mut">${o.usd>236?`Con la ida JetSMART 15:55 (US$ 236) ahorrarías <b style="color:var(--ok)">${money(sv)}</b> y ganarías la noche del 1/4 en Río, pero no sale después de las 20 h.`:"Esta ida es la más barata, pero no cumple tu pedido de salir pasadas las 20 h."} Para 12 personas, comprá en tandas de 4.</div></div>`}
+$("onlyOk").onclick=()=>{S.okOnly=!S.okOnly;$("onlyOk").classList.toggle("on",S.okOnly);renderFlights()};
+
+/* ============ AUTO ============ */
+function buildAuto(){$("legs").innerHTML=`<div class="leg mut"><span>Tramo</span><span>km</span><span>Peaje R$</span></div>`+D.legs.map((l,i)=>`<div class="leg"><span>${l.n}</span><input type="number" data-i="${i}" data-j="0"><input type="number" data-i="${i}" data-j="1"></div>`).join("");
+ $("legs").oninput=e=>{const t=e.target;if(t.dataset.i){P.legs[t.dataset.i][t.dataset.j]=+t.value;upd()}};
+ $("vanSeg").onclick=e=>{const v=e.target.dataset.v;if(v!=null){P.van=+v;upd()}};
+ [["kml","vKml",v=>v],["fuel","vFuel",v=>"R$ "+(+v).toFixed(2)],["carDay","vCar",v=>"US$ "+v],["carDays","vCd",v=>v]].forEach(([k,o,f])=>{const el=$(k);el.value=P[k];el.oninput=()=>{P[k]=+el.value;upd()}})}
+function renderAuto(){document.querySelectorAll("#legs input").forEach(e=>e.value=P.legs[e.dataset.i][e.dataset.j]);
+ document.querySelectorAll("#vanSeg button").forEach(b=>b.classList.toggle("on",+b.dataset.v==P.van));
+ $("vKml").textContent=P.kml;$("vFuel").textContent="R$ "+P.fuel.toFixed(2);$("vCar").textContent="US$ "+P.carDay;$("vCd").textContent=P.carDays;
+ const R=D.groups.map(n=>calc(n,P)),g=(r,c)=>r.by[c],tot=r=>g(r,"Auto")+g(r,"Nafta")+g(r,"Peajes"),mx=Math.max(...R.map(tot));
+ $("carBars").innerHTML=R.map((r,i)=>`<div class="b" style="width:${Math.max(25,tot(r)/mx*100)}%">${D.groups[i]} pers · ${money(tot(r))}</div>`).join("");
+ $("carTb").innerHTML=`<tr><th></th>${D.groups.map(n=>`<th class="n">${n}</th>`).join("")}</tr>`+[["Autos",r=>r.cars],["Km c/u",r=>r.km],["Litros",r=>Math.round(r.km/(P.kml*(P.van?.8:1))*r.cars)],["Alquiler",r=>money(g(r,"Auto"))],["Nafta",r=>money(g(r,"Nafta"))],["Peajes",r=>money(g(r,"Peajes"))],["Por persona",(r,i)=>money(tot(r)/D.groups[i])]].map(([l,f])=>`<tr><td>${l}</td>${R.map((r,i)=>`<td class="n">${f(r,i)}</td>`).join("")}</tr>`).join("")}
+
+/* ============ PRESUPUESTO ============ */
+const PRESETS={"🎒 Ahorro":{lodg:"econ",lm:1,food:"econ",night:20,carDay:35,acts:{cristo:1,pao:0,arr:1,buz:0,dos:1}},"⚖️ Equilibrado":{lodg:"med",lm:1,food:"med",night:35,carDay:45,acts:{cristo:1,pao:1,arr:1,buz:1,dos:1}},"💎 Premium":{lodg:"med",lm:1.5,food:"alto",night:70,carDay:70,acts:{cristo:1,pao:1,arr:1,buz:1,dos:1}}};
+const SL=[["night","Joda p/p/noche (US$)",0,120,1],["bag","Equipaje p/p (US$)",0,150,5],["ub","Uber Río US$/día/auto",5,40,1],["lm","Multiplicador alojamiento",.7,2,.05],["cont","Imprevistos %",0,25,1],["seg","Asistencia médica p/p (US$)",0,120,5]];
+function buildPresu(){$("presets").innerHTML=Object.keys(PRESETS).map(k=>`<button class="chip" onclick="Object.assign(P,structuredClone(PRESETS['${k}']));syncSl();upd();toast('${k}')">${k}</button>`).join("")
+ +`<select id="lodgS" style="margin-left:auto"><option value="econ">Aloj. económico</option><option value="med">Aloj. medio</option></select><select id="foodS"><option value="econ">Comida econ</option><option value="med">Comida media</option><option value="alto">Comida alta</option></select>`;
+ $("lodgS").onchange=e=>{P.lodg=e.target.value;upd()};$("foodS").onchange=e=>{P.food=e.target.value;upd()};
+ $("sliders").innerHTML=SL.map(s=>`<label>${s[1]} <b id="v_${s[0]}"></b><input type="range" id="s_${s[0]}" min="${s[2]}" max="${s[3]}" step="${s[4]}"></label>`).join("")
+  +`<label style="margin-top:6px">Dólar ARS <b id="v_ars"></b><input type="range" id="s_ars" min="1000" max="3000" step="10"></label>`+`<div style="margin-top:10px"><b>Actividades</b>${D.acts.map(a=>`<label class="ck" style="color:var(--fg);font-size:.9rem"><input type="checkbox" data-a="${a.id}"> ${a.l} (R$${a.brl})</label>`).join("")}</div>`;
+ SL.forEach(s=>$("s_"+s[0]).oninput=e=>{P[s[0]]=+e.target.value;upd()});$("s_ars").oninput=e=>{D.fx.ars=+e.target.value;upd()};
+ $("sliders").onchange=e=>{if(e.target.dataset.a){P.acts[e.target.dataset.a]=+e.target.checked;upd()}};syncSl()}
+function syncSl(){SL.forEach(s=>$("s_"+s[0]).value=P[s[0]]);$("s_ars").value=D.fx.ars;document.querySelectorAll("#sliders [data-a]").forEach(c=>c.checked=!!P.acts[c.dataset.a]);$("lodgS").value=P.lodg;$("foodS").value=P.food}
+function renderPresu(){SL.forEach(s=>$("v_"+s[0]).textContent=P[s[0]]);$("v_ars").textContent="$ "+D.fx.ars;
+ const R=D.groups.map(n=>calc(n,P)),r=R[D.groups.indexOf(S.n)],cats=Object.keys(r.by),tot=r.total;
+ let off=0;const C=2*Math.PI*42;$("donut").innerHTML=`<circle cx="60" cy="60" r="42" fill="none" stroke="var(--bd)" stroke-width="16"/>`+cats.map((c,i)=>{const f=r.by[c]/tot,len=f*C,s=`<circle cx="60" cy="60" r="42" fill="none" stroke="${COL[i]}" stroke-width="16" stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 60 60)"><title>${c}: ${money(r.by[c])}</title></circle>`;off+=len;return s}).join("")+`<text x="60" y="56" text-anchor="middle" style="font-size:7px;fill:var(--mut)">${S.n} pers.</text><text x="60" y="68" text-anchor="middle" style="font-size:10px;font-weight:800">${money(tot/S.n)}</text>`;
+ $("legend").innerHTML=cats.map((c,i)=>`<div><i style="background:${COL[i]}"></i>${c}<span>${money(r.by[c])} <small class="mut">${Math.round(r.by[c]/tot*100)}%</small></span></div>`).join("");
+ $("kpis").innerHTML=R.map((x,i)=>`<div class="card" style="padding:10px;text-align:center;${D.groups[i]==S.n?"outline:2px solid var(--a)":""}"><div class="mut" style="font-size:.78rem">${D.groups[i]} pers.</div><b style="font-size:1.15rem">${money(x.total/D.groups[i])}</b><div class="mut" style="font-size:.75rem">p/p</div></div>`).join("");
+ const mx=Math.max(...R.map((x,i)=>x.total/D.groups[i]));$("cmpBars").innerHTML=R.map((x,i)=>`<div class="b" style="width:${x.total/D.groups[i]/mx*100}%">${D.groups[i]}p · ${money(x.total)}</div>`).join("");
+ $("tb").innerHTML=`<tr><th>Categoría</th>${D.groups.map(n=>`<th class="n">${n}</th>`).join("")}</tr>`+cats.map(c=>`<tr><td>${c}</td>${R.map(x=>`<td class="n">${money(x.by[c])}</td>`).join("")}</tr>`).join("")+`<tr class="tot"><td>TOTAL grupo</td>${R.map(x=>`<td class="n">${money(x.total)}</td>`).join("")}</tr><tr><td>Por persona</td>${R.map((x,i)=>`<td class="n">${money(x.total/D.groups[i])}</td>`).join("")}</tr>`;
+ window._sum=`Brasil 1-11/4/2027 · ${S.n} personas\nTotal: ${money(tot)} (${money(tot/S.n)} p/p)\n`+cats.map(c=>`- ${c}: ${money(r.by[c])}`).join("\n")}
+$("copy").onclick=()=>{navigator.clipboard?.writeText(window._sum).then(()=>toast("Resumen copiado"),()=>toast("No se pudo copiar"))};
+
+/* ============ CHECKLIST ============ */
+function renderCheck(){const d=CHECK.filter((_,i)=>S.ck[i]).length;$("ckT").textContent=`${d} de ${CHECK.length} listos`;$("ckP").style.width=d/CHECK.length*100+"%";
+ $("ckL").innerHTML=CHECK.map((t,i)=>`<label class="ck ${S.ck[i]?"done":""}" style="color:var(--fg);font-size:1rem"><input type="checkbox" ${S.ck[i]?"checked":""} onchange="S.ck[${i}]=this.checked;save();renderCheck()"><span>${t}</span></label>`).join("")}
+
+/* ============ GLOBAL ============ */
+function upd(){document.querySelectorAll("#gSeg button").forEach(b=>b.classList.toggle("on",+b.dataset.n==S.n));document.querySelectorAll("#cSeg button").forEach(b=>b.classList.toggle("on",b.dataset.c==S.cur));
+ const r=calc(S.n,P);$("fabPP").textContent=money(r.total/S.n);$("fabT").textContent=money(r.total)+" · "+S.n+" pers.";
+ $("heroStats").innerHTML=[["10","noches"],[r.km+" km","en auto"],["US$ "+(D.out.find(x=>x.id==P.outId).usd+D.ret.find(x=>x.id==P.retId).usd),"vuelos p/p"],[money(r.total/S.n),"todo incluido p/p"]].map(s=>`<div class="stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join("");
+ renderDay();renderFlights();renderAuto();renderPresu()}
+renderDays();renderPlaces();buildAuto();buildPresu();renderCheck();$("onlyOk").classList.add("on");upd();
+go(TABS.some(t=>t[0]==location.hash.slice(1))?location.hash.slice(1):"plan");
+</script></body></html>
